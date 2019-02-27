@@ -1,0 +1,12 @@
+.btn-outline-secondary{
+    margin-left: 1em;
+}
+
+.btn-outline-secondary:hover{
+    background-color: black;
+}
+
+.col{
+    background-color: pink;
+    border-color: white;
+}
