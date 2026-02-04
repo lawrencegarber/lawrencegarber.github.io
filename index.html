@@ -1,78 +1,595 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Bootstrap</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">CenteredCity | PHL</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Pricing</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown link
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </li>
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                  </form>
-              </ul>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culture Plans Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <nav class="top-nav">
+      <div class="nav-left">
+        <span class="app-name">Culture Plans Hub</span>
+        <span class="badge-accent">Internal Tool</span>
+      </div>
+      <div class="nav-right">
+        <span class="user-pill">Regional User</span>
+        <div class="user-meta">
+          <span class="user-name">Alex Morgan</span>
+          <span class="user-region">Northeast</span>
+        </div>
+      </div>
+    </nav>
+
+    <main class="page-container">
+      <section class="page-section" id="dashboard">
+        <div class="section-title-row">
+          <div>
+            <p class="eyebrow">Dashboard</p>
+            <h1>Campaign Dashboard</h1>
+            <p class="subtle">Review and action campaigns.</p>
+          </div>
+          <div class="header-actions">
+            <button class="btn btn-primary" type="button">Upload PPT</button>
+            <button class="btn btn-secondary" type="button">Export to Excel</button>
+            <button class="btn btn-secondary" type="button">Import Excel Changes</button>
+          </div>
+        </div>
+
+        <div class="filter-bar">
+          <div class="filter-group">
+            <label for="region-filter">Region</label>
+            <select id="region-filter" disabled>
+              <option>Your campaigns</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="year-filter">Planning Year</label>
+            <select id="year-filter">
+              <option>2026</option>
+              <option>2025</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="status-filter">Status</label>
+            <select id="status-filter">
+              <option>All</option>
+              <option>Draft</option>
+              <option>Submitted</option>
+              <option>Changes Requested</option>
+              <option>Approved</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="search-filter">Search</label>
+            <input id="search-filter" type="text" placeholder="Search campaigns">
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">Campaign List</div>
+          <div class="card-body">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Campaign Name</th>
+                  <th>Region</th>
+                  <th>Start-End</th>
+                  <th>Total Budget</th>
+                  <th>Status</th>
+                  <th>Last Updated</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Summer Street Courts</td>
+                  <td>Northeast</td>
+                  <td>05/12/2026 - 07/20/2026</td>
+                  <td>$125,000</td>
+                  <td><span class="status-pill status-draft">Draft</span></td>
+                  <td>2 days ago</td>
+                </tr>
+                <tr>
+                  <td>Culture Weekender</td>
+                  <td>Midwest</td>
+                  <td>03/01/2026 - 04/10/2026</td>
+                  <td>$210,500</td>
+                  <td><span class="status-pill status-submitted">Submitted</span></td>
+                  <td>Today</td>
+                </tr>
+                <tr>
+                  <td>City Roots Tour</td>
+                  <td>West</td>
+                  <td>06/15/2026 - 09/02/2026</td>
+                  <td>$310,000</td>
+                  <td><span class="status-pill status-changes">Changes Requested</span></td>
+                  <td>Yesterday</td>
+                </tr>
+                <tr>
+                  <td>Heritage Spotlight</td>
+                  <td>National</td>
+                  <td>02/05/2026 - 05/30/2026</td>
+                  <td>$515,000</td>
+                  <td><span class="status-pill status-approved">Approved</span></td>
+                  <td>Jan 25</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section" id="upload">
+        <div class="section-title-row">
+          <div>
+            <p class="eyebrow">Upload PPT</p>
+            <h2>Upload Wizard</h2>
+          </div>
+          <div class="step-indicator">Step 1 of 3</div>
+        </div>
+
+        <div class="wizard-grid">
+          <div class="card">
+            <div class="card-header">Step 1 - Upload File</div>
+            <div class="card-body">
+              <div class="dropzone">
+                <div class="dropzone-icon">PPT</div>
+                <div>
+                  <div class="dropzone-title">Drop your PPT campaign deck here or browse.</div>
+                  <div class="subtle">File ready: Culture_Spring_2026.pptx</div>
+                </div>
+              </div>
+              <div class="inline-success">Upload complete. No issues found.</div>
             </div>
-        </nav>
-            
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img class="d-block w-100" src="https://images.unsplash.com/photo-1508770218424-753a10cd8117?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="First slide">
+          </div>
+
+          <div class="card">
+            <div class="card-header">Step 2 - Data Check</div>
+            <div class="card-body">
+              <div class="check-grid">
+                <div>
+                  <div class="check-title error">Errors (blocking)</div>
+                  <ul class="check-list">
+                    <li>
+                      <span class="status-dot status-error"></span>
+                      <div>
+                        <div class="check-label">Template</div>
+                        <div class="check-message">We could not match this PPT to the standard template. Check that you are using this year's file.</div>
+                        <button class="link-button" type="button">Go to field</button>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="status-dot status-error"></span>
+                      <div>
+                        <div class="check-label">Planned Events</div>
+                        <div class="check-message">Required table "Planned Events" missing.</div>
+                        <button class="link-button" type="button">Go to field</button>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <div class="check-title warning">Warnings (non-blocking)</div>
+                  <ul class="check-list">
+                    <li>
+                      <span class="status-dot status-warning"></span>
+                      <div>
+                        <div class="check-label">Totals</div>
+                        <div class="check-message">Totals do not match event sum.</div>
+                        <button class="link-button" type="button">Go to field</button>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="status-dot status-warning"></span>
+                      <div>
+                        <div class="check-label">Optional fields</div>
+                        <div class="check-message">5 optional fields are empty. You can still submit.</div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <div class="check-title info">Info</div>
+                  <ul class="check-list">
+                    <li>
+                      <span class="status-dot status-info"></span>
+                      <div>
+                        <div class="check-label">Main Content Output</div>
+                        <div class="check-message">3 rows detected.</div>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="status-dot status-info"></span>
+                      <div>
+                        <div class="check-label">Planned Events</div>
+                        <div class="check-message">0 rows detected.</div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="button-row">
+                <button class="btn btn-primary" type="button">Continue to Draft</button>
+                <button class="btn btn-secondary" type="button">Fix Issues</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">Step 3 - Confirmation</div>
+            <div class="card-body">
+              <div class="summary-card">
+                <div class="summary-title">Campaign Summary</div>
+                <div class="summary-row">
+                  <span>Campaign</span>
+                  <span>Summer Street Courts</span>
+                </div>
+                <div class="summary-row">
+                  <span>Region</span>
+                  <span>Northeast</span>
+                </div>
+                <div class="summary-row">
+                  <span>Dates</span>
+                  <span>05/12/2026 - 07/20/2026</span>
+                </div>
+                <div class="summary-row">
+                  <span>Total Budget</span>
+                  <span>$125,000</span>
+                </div>
+                <div class="summary-row">
+                  <span>Status</span>
+                  <span>Status: Draft (not yet submitted)</span>
+                </div>
+              </div>
+
+              <div class="button-row">
+                <button class="btn btn-secondary" type="button">Save as Draft</button>
+                <button class="btn btn-primary" type="button">Submit to National Team</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section" id="detail">
+        <div class="section-title-row">
+          <div>
+            <p class="eyebrow">Campaign Detail</p>
+            <h2>Summer Street Courts</h2>
+          </div>
+          <span class="status-pill status-draft">Draft</span>
+        </div>
+
+        <div class="detail-grid">
+          <div class="detail-main">
+            <div class="card">
+              <div class="card-header">Overview</div>
+              <div class="card-body">
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="campaign-name">Campaign Name</label>
+                    <input id="campaign-name" type="text" value="Summer Street Courts">
                   </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="https://images.unsplash.com/photo-1503411148546-b57247460b64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="Second slide">
+                  <div class="form-group">
+                    <label for="region">Region</label>
+                    <input id="region" type="text" value="Northeast" readonly>
                   </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="https://images.unsplash.com/photo-1506636366880-b083d2cb2f34?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="Third slide">
+                  <div class="form-group">
+                    <label for="start-date">Start Date</label>
+                    <input id="start-date" type="date" value="2026-05-12">
+                  </div>
+                  <div class="form-group">
+                    <label for="end-date">End Date</label>
+                    <input id="end-date" type="date" value="2026-07-20">
+                  </div>
+                  <div class="form-group">
+                    <label for="key-moment">Media Key Moment</label>
+                    <input id="key-moment" type="text" value="Opening weekend showcase">
+                  </div>
+                  <div class="form-group">
+                    <label for="io-code">IO / Budget Code</label>
+                    <input id="io-code" type="text" value="NE-CPH-0426">
+                  </div>
+                  <div class="form-group">
+                    <label for="sports-lead">Sports Lead</label>
+                    <input id="sports-lead" type="text" value="Jordan Lee">
+                  </div>
+                  <div class="form-group">
+                    <label for="culture-lead">Culture Lead</label>
+                    <input id="culture-lead" type="text" value="Mia Torres">
+                  </div>
+                  <div class="form-group">
+                    <label for="brand-lead">Brand Lead</label>
+                    <input id="brand-lead" type="text" value="Avery Chen">
+                  </div>
+                  <div class="form-group">
+                    <label for="media-lead">Media Network Project Lead</label>
+                    <input id="media-lead" type="text" value="Sam Patel">
                   </div>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </a>
               </div>
-              <br>
+            </div>
 
-              <button type="button" class="btn btn-outline-secondary">Let's Explore Some Urbans</button>
-            
-         
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    </body>
+            <div class="card">
+              <div class="card-header">Strategy and Story</div>
+              <div class="card-body">
+                <div class="form-stack">
+                  <div class="form-group">
+                    <label for="idea">Idea in a Sentence</label>
+                    <textarea id="idea" rows="2">Bring neighborhood courts to life through weekend activations.</textarea>
+                    <div class="field-count">42 / 200</div>
+                  </div>
+                  <div class="form-group">
+                    <label for="why">Why</label>
+                    <textarea id="why" rows="3">Drive community participation and increase local program signups.</textarea>
+                    <div class="field-count">78 / 300</div>
+                  </div>
+                  <div class="form-group">
+                    <label for="who">Who is this for</label>
+                    <textarea id="who" rows="3">High school athletes, families, and local partners.</textarea>
+                    <div class="field-count">68 / 300</div>
+                  </div>
+                  <div class="form-group">
+                    <label for="how">How and when does a consumer hear about it</label>
+                    <textarea id="how" rows="3">Paid social, local radio, and community partner emails.</textarea>
+                    <div class="field-count">74 / 300</div>
+                  </div>
+                  <div class="form-group">
+                    <label for="success">What does success look like</label>
+                    <textarea id="success" rows="3">2,000 attendees and 500 new program registrations.</textarea>
+                    <div class="field-count">66 / 300</div>
+                  </div>
+                  <div class="form-group">
+                    <label for="hooks">Hook(s)</label>
+                    <textarea id="hooks" rows="2">Weekend court takeovers with live music and giveaways.</textarea>
+                    <div class="field-count">70 / 200</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">Main Content Output</div>
+              <div class="card-body">
+                <div class="table-actions">
+                  <button class="btn btn-secondary" type="button">Add Row</button>
+                </div>
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Platform</th>
+                      <th>Length (sec)</th>
+                      <th>Description</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Instagram Reels</td>
+                      <td>30</td>
+                      <td>Highlight local teams and weekend schedule.</td>
+                      <td><button class="btn btn-ghost" type="button">Remove</button></td>
+                    </tr>
+                    <tr>
+                      <td>YouTube Shorts</td>
+                      <td>45</td>
+                      <td>Behind the scenes prep and partner shoutouts.</td>
+                      <td><button class="btn btn-ghost" type="button">Remove</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">Ticketing, Merch, Partnerships</div>
+              <div class="card-body">
+                <div class="three-column">
+                  <div class="form-group">
+                    <label for="ticketing">Ticketing Plan</label>
+                    <textarea id="ticketing" rows="4">Free entry with RSVP.</textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="merch">Merchandising Plan</label>
+                    <textarea id="merch" rows="4">Limited tees for first 200 attendees.</textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="partnership">Partnership Plan</label>
+                    <textarea id="partnership" rows="4">Local youth leagues and rec centers.</textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">Planned Events</div>
+              <div class="card-body">
+                <div class="inline-warning">
+                  Heads up: Planned event budgets do not match the total event budget.
+                </div>
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Event Name</th>
+                      <th>Event Type</th>
+                      <th>City, State</th>
+                      <th>Planned Attendees</th>
+                      <th>Budget</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>06/02/2026</td>
+                      <td>Downtown Tipoff</td>
+                      <td>Community</td>
+                      <td>Philadelphia, PA</td>
+                      <td>800</td>
+                      <td>$40,000</td>
+                    </tr>
+                    <tr>
+                      <td>06/18/2026</td>
+                      <td>Weekend Showcase</td>
+                      <td>Activation</td>
+                      <td>Camden, NJ</td>
+                      <td>1,200</td>
+                      <td>$55,000</td>
+                    </tr>
+                    <tr class="totals-row">
+                      <td colspan="4">Totals</td>
+                      <td>2,000</td>
+                      <td>$95,000</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">Budgets and Totals</div>
+              <div class="card-body">
+                <div class="metric-grid">
+                  <div class="metric-card">
+                    <div class="metric-label">Total Budget</div>
+                    <div class="metric-value">$125,000</div>
+                  </div>
+                  <div class="metric-card">
+                    <div class="metric-label">Culture</div>
+                    <div class="metric-value">$65,000</div>
+                  </div>
+                  <div class="metric-card">
+                    <div class="metric-label">Media Network</div>
+                    <div class="metric-value">$40,000</div>
+                  </div>
+                  <div class="metric-card">
+                    <div class="metric-label">Direct Advertising</div>
+                    <div class="metric-value">$20,000</div>
+                  </div>
+                  <div class="metric-card">
+                    <div class="metric-label">Culture Income</div>
+                    <div class="metric-value">$5,000</div>
+                  </div>
+                  <div class="metric-card">
+                    <div class="metric-label">Total Planned Events</div>
+                    <div class="metric-value">2</div>
+                  </div>
+                  <div class="metric-card">
+                    <div class="metric-label">Total Planned Attendees</div>
+                    <div class="metric-value">2,000</div>
+                  </div>
+                  <div class="metric-card">
+                    <div class="metric-label">Total Event Budget</div>
+                    <div class="metric-value">$90,000</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="detail-side">
+            <div class="card">
+              <div class="card-header">Campaign Logo</div>
+              <div class="card-body">
+                <div class="logo-preview">Logo Preview</div>
+                <div class="subtle">Imported from PPT.</div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">Actions</div>
+              <div class="card-body">
+                <div class="action-group">
+                  <div class="action-title">Regional User</div>
+                  <button class="btn btn-secondary" type="button">Save Draft</button>
+                  <button class="btn btn-primary" type="button">Submit to National Team</button>
+                </div>
+                <div class="action-group">
+                  <div class="action-title">National Team</div>
+                  <button class="btn btn-primary" type="button">Approve Campaign</button>
+                  <button class="btn btn-secondary" type="button">Mark as Changes Requested</button>
+                  <button class="btn btn-secondary" type="button">Generate Updated PPT</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">Activity</div>
+              <div class="card-body">
+                <ul class="activity-list">
+                  <li>Uploaded by Alex Morgan on Jan 21.</li>
+                  <li>Data check completed on Jan 22.</li>
+                  <li>Excel changes applied by National Team on Jan 26.</li>
+                  <li>Status moved to Draft on Jan 27.</li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="page-section" id="excel">
+        <div class="section-title-row">
+          <div>
+            <p class="eyebrow">Excel</p>
+            <h2>Export and Import</h2>
+          </div>
+        </div>
+        <div class="excel-grid">
+          <div class="card">
+            <div class="card-header">Export</div>
+            <div class="card-body">
+              <div class="option-list">
+                <label class="radio-option">
+                  <input type="radio" name="export-scope" checked>
+                  <span>Export current filter</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="export-scope">
+                  <span>Export all campaigns</span>
+                </label>
+              </div>
+              <p class="subtle">Exports a single sheet with one row per campaign (flattened fields).</p>
+              <button class="btn btn-primary" type="button">Export to Excel</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">Import Excel Changes</div>
+            <div class="card-body">
+              <ol class="step-list">
+                <li>Choose file (must match the exported template).</li>
+                <li>Summary: 18 campaigns detected.</li>
+                <li>5 campaigns updated. 2 campaigns have conflicts.</li>
+              </ol>
+              <div class="conflict-list">
+                <div class="conflict-item">
+                  <span class="status-dot status-warning"></span>
+                  <div>
+                    <div class="check-label">City Roots Tour</div>
+                    <div class="check-message">Main Content Output - Platform mismatch.</div>
+                  </div>
+                </div>
+                <div class="conflict-item">
+                  <span class="status-dot status-warning"></span>
+                  <div>
+                    <div class="check-label">Heritage Spotlight</div>
+                    <div class="check-message">Planned Events - Budget total mismatch.</div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-primary" type="button">Apply Changes</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast-stack">
+      <div class="toast">Excel exported.</div>
+      <div class="toast toast-success">Excel changes applied. New PPTs generated.</div>
+    </div>
+  </body>
 </html>
