@@ -1,0 +1,128 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+enum UserRole {
+  regional
+  national
+  admin
+}
+
+enum Region {
+  Northeast
+  Southeast
+  Midwest
+  Central
+  West
+  National
+}
+
+enum CampaignStatus {
+  Draft
+  Submitted
+  ChangesRequested
+  Approved
+}
+
+enum CampaignVersionType {
+  original_upload
+  excel_update
+}
+
+model User {
+  id        String     @id @default(cuid())
+  email     String     @unique
+  role      UserRole
+  region    Region?
+  campaigns Campaign[] @relation("CampaignCreator")
+  versions  CampaignVersion[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Campaign {
+  id                          String          @id @default(cuid())
+  name                        String
+  region                      Region
+  year                        Int
+  status                      CampaignStatus  @default(Draft)
+  startDate                   DateTime?
+  endDate                     DateTime?
+  mediaKeyMoment              String?
+  sportsCultureBrandLead      String?
+  mediaNetworkProjectLead     String?
+  ioNumber                    String?
+  ideaInSentence              String?
+  why                         String?
+  whoIsThisFor                String?
+  consumerHearsAboutIt        String?
+  whatDoesSuccessLookLike     String?
+  hooks                       String?
+  ticketingPlan               String?
+  merchandisingPlan           String?
+  partnershipPlan             String?
+  totalBudget                 Float?
+  budgetCulture               Float?
+  budgetMediaNetwork          Float?
+  budgetDirectAdvertising     Float?
+  budgetCultureIncome         Float?
+  totalPlannedEvents          Int?
+  totalPlannedAttendees       Int?
+  totalEventBudget            Float?
+  originalPptPath             String?
+  latestGeneratedPptPath      String?
+  logoImagePath               String?
+  createdByUserId             String
+  createdBy                   User            @relation("CampaignCreator", fields: [createdByUserId], references: [id])
+  contentOutputs              ContentOutput[]
+  plannedEvents               PlannedEvent[]
+  versions                    CampaignVersion[]
+  createdAt                   DateTime        @default(now())
+  updatedAt                   DateTime        @updatedAt
+}
+
+model ContentOutput {
+  id            String   @id @default(cuid())
+  campaignId    String
+  index         Int
+  platform      String?
+  lengthSeconds Int?
+  description   String?
+  campaign      Campaign @relation(fields: [campaignId], references: [id])
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model PlannedEvent {
+  id               String   @id @default(cuid())
+  campaignId        String
+  index            Int
+  date             DateTime?
+  name             String?
+  type             String?
+  cityState        String?
+  plannedAttendees Int?
+  budget           Float?
+  campaign         Campaign @relation(fields: [campaignId], references: [id])
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model CampaignVersion {
+  id              String              @id @default(cuid())
+  campaignId      String
+  versionNumber   Int
+  type            CampaignVersionType
+  pptFilePath     String
+  createdByUserId String?
+  createdBy       User?               @relation(fields: [createdByUserId], references: [id])
+  campaign        Campaign            @relation(fields: [campaignId], references: [id])
+  createdAt       DateTime            @default(now())
+}
